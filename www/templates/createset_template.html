@@ -1,0 +1,279 @@
+<!--
+
+ Structure:
+ - Aligned:
+    - Logo/Text
+    - "Home" Button. index.php (?)
+    - "My Sets" Button. mysets.php (?)
+    - User Login/Registration System.
+ - Aligned:
+    - ItemSet Creator
+		-
+	- Div:
+		- Item-Name-Searchbar
+		- Aligned:
+			- List of all items
+			- Item filter (Like in LoL Client)
+ - Global Item Set Settings
+ - "Save" Button.
+
+ -->
+
+<!-- HOLY FUCKING SHIT HTML and CSS is SO annoying. Hate this stuff. Time for new technology pls -->
+<div id="SiteBody">
+
+	<article id="main">
+		<div class="tac"><span class="xl">Configure your Item-Set and press "Save". (OR <span class=" upload button2">UPLOAD</span>)</span></div>
+		<hr id="InsertHere" class="fancy-line"/>
+
+		<div id="SetBuilder" class="whiteSection">
+
+			<table class="invisitable" id="SetBuilderInner">
+				<tr>
+					<td style="text-align: left; width: 60%; vertical-align: top"><div id="SetBuilderInnerInner">
+						<div id="BlockTemplate" class="buildBlock">
+							<div class="ItemSetBlockOuter">
+								<hr class="fancy-line" style="margin-bottom: 0;"/>
+								<div class="ItemSetBlock build">
+									<input class="blockinput" placeholder="Block-Name"/>
+									<span class="borderino"><input type="checkbox" id="recMath">Tutorial Formatting</span>
+								</div>
+								<hr class="fancy-line" style="margin-top: 0;"/>
+								<div class="ItemSetBlockItems" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+								</div>
+							</div>
+						</div>
+						{c=ItemSet->complete}
+						{ifCS01 c==true}
+							{blocks = ItemSet->blocks}
+							{forIST6 block in blocks}
+						<div class="realbb buildBlock">
+							<div class="ItemSetBlockOuter">
+								<hr class="fancy-line" style="margin-bottom: 0;"/>
+								<div class="ItemSetBlock build">
+									<input class="blockinput" placeholder="Block-Name" value="{block->Name}"/>
+									<span class="borderino"><input type="checkbox" id="recMath" {rmn=block->recMath}{ifRND1 rmn==true}checked={endRND1}>Tutorial Formatting</span>
+								</div>
+								<hr class="fancy-line" style="margin-top: 0;"/>
+								<div class="ItemSetBlockItems" ondrop="drop(event)" ondragover="allowDrop(event)">
+									{bitems = block->Items}
+									{forRND2 item in bitems}
+									<div draggable="true" ondragend="dragend(event)" ondragstart="drag(event)"
+									     class="ItemSetItem" data-item-id="{item->ItemID}" data-item-name="{item->Name}" style="background-color: rgba(0, 0, 0, 0.5);">
+										<div class="divimg tooltip"
+										     style="position: relative; width: 32px; height: 32px; background: url('http://lkimg.zamimg.com/images/v2/items/icons/size32x32/{item->ItemID}.png')">
+											<div class="tts1">
+												<b>{item->Name}</b><br/>{desc=item->Description}{desc=closetag(desc)}{desc}
+												<br/><br/>
+												<b>Builds Into:</b><br/>
+												{buildsinto = item->BuildsInto}
+												{forCS22 biid in buildsinto}
+												<div class="divimg ItemSetItem"
+												     style="position: relative; width: 32px; height: 32px; background: url('http://lkimg.zamimg.com/images/v2/items/icons/size32x32/{biid}.png')"></div>
+												{endCS22}
+												{bis = count(buildsinto)}
+												{ifCS23 bis == 0}
+												Nothing.
+												{endCS23}
+												<div style="clear: both"></div>
+												<br/>
+												<br/>
+												<b>Builds From:</b><br/>
+												{buildsfrom = item->BuildsFrom}
+												{forCS24 bfid in buildsfrom}
+												<div class="divimg ItemSetItem"
+												     style="position: relative; width: 32px; height: 32px; background: url('http://lkimg.zamimg.com/images/v2/items/icons/size32x32/{bfid}.png')"></div>
+												{endCS24}
+												{bfs = count(buildsfrom)}
+												{ifCS25 bfs == 0}
+												Nothing.
+												{endCS25}
+											</div>
+										</div>
+										<span class="yellow s">{item->Gold}</span>
+										<br/><span class='decrease'>◄</span><span>1</span><span
+											class='increase'>►</span>
+									</div>
+									{endRND2}
+								</div>
+							</div>
+						</div>
+							{endIST6}
+						{endCS01}
+						{ifCS02 c!=true}
+						<div class="realbb buildBlock">
+							<div class="ItemSetBlockOuter">
+								<hr class="fancy-line" style="margin-bottom: 0;"/>
+								<div class="ItemSetBlock build">
+									<input class="blockinput" placeholder="Block-Name" />
+									<span class="borderino"><input type="checkbox" id="recMath">Tutorial Formatting</span>
+								</div>
+								<hr class="fancy-line" style="margin-top: 0;"/>
+								<div class="ItemSetBlockItems" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+								</div>
+							</div>
+						</div>
+						{endCS02}
+						<div class="buildBlock">
+							<span id="addnewblock" class="button2 white xxl">Add new block</span>
+						</div>
+
+					</div></td>
+					<td style="width: 40%; border-left: 1px black solid;">
+
+						<div id="ItemSearch">
+							<span class="input input--haruki black">
+								<input class="input__field input__field--haruki black" type="text" id="itemsearchbar"/>
+								<label class="input__label input__label--haruki black" for="itemsearchbar">
+									<span class="input__label-content input__label-content--haruki black">Item Name</span>
+								</label>
+							</span>
+						</div>
+
+						<table class="invisitable">
+							<tr id="itemlistandsearch">
+								<td  style="width: 60%; vertical-align: top;"><div id="itemlist">
+									{Items=sortItems(Items)}
+									{forCS21 item in Items}
+									{tags=item->Tags}
+									{json=arrobjtojson(tags)}
+									{encodedJSON=escapeQuotes(json)}
+
+									<div draggable="true" data-item-id="{item->ItemID}" ondragend="dragend(event)" ondragstart="drag(event)" class="ItemSetItem" data-item-name="{item->Name}" data-item-tags="{encodedJSON}" style="background-color: rgba(0, 0, 0, 0.5);">
+										<div class="divimg tooltip" style="position: relative; width: 32px; height: 32px; background: url('http://lkimg.zamimg.com/images/v2/items/icons/size32x32/{item->ItemID}.png')">
+											<div class="tts1">
+												<b>{item->Name}</b><br/>{desc=item->Description}{desc=closetag(desc)}{desc}
+												<br/><br/>
+												<b>Builds Into:</b><br/>
+												{buildsinto = item->BuildsInto}
+												{forCS22 biid in buildsinto}
+												<div class="divimg ItemSetItem"
+												     style="position: relative; width: 32px; height: 32px; background: url('http://lkimg.zamimg.com/images/v2/items/icons/size32x32/{biid}.png')"></div>
+												{endCS22}
+												{bis = count(buildsinto)}
+												{ifCS23 bis == 0}
+												Nothing.
+												{endCS23}
+												<div style="clear: both"></div>
+												<br/>
+												<br/>
+												<b>Builds From:</b><br/>
+												{buildsfrom = item->BuildsFrom}
+												{forCS24 bfid in buildsfrom}
+												<div class="divimg ItemSetItem"
+												     style="position: relative; width: 32px; height: 32px; background: url('http://lkimg.zamimg.com/images/v2/items/icons/size32x32/{bfid}.png')"></div>
+												{endCS24}
+												{bfs = count(buildsfrom)}
+												{ifCS25 bfs == 0}
+												Nothing.
+												{endCS25}
+											</div>
+										</div>
+										<span class="yellow s">{item->Gold}</span>
+									</div>
+									{endCS21}
+
+								</div></td>
+								<td style="width: 40%; vertical-align: top;"><div id="the1andonlyfilter">
+
+									Filter
+									<!--<hr class="fancy-line" />
+
+									<span class="tb button2" data-tag="">-->
+
+									<hr class="fancy-line" />
+
+									<span class="tb black button2" data-tag="Lane">Lane</span>
+									<span class="tb black button2" data-tag="Jungle">Jungle</span>
+
+									<hr class="fancy-line" />
+
+									<span class="tb black button2" data-tag="Consumable">Pots/Wards</span>
+									<span class="tb black button2" data-tag="GoldPer">Gold</span>
+									<span class="tb black button2" data-tag="Vision">Vision</span>
+									<span class="tb black button2" data-tag="Trinket">Trinkets</span>
+
+									<hr class="fancy-line" />
+
+									<span class="tb black button2" data-tag="Armor">Armor</span>
+									<span class="tb black button2" data-tag="SpellBlock">Magic Resistance</span>
+									<span class="tb black button2" data-tag="Health">Health</span>
+									<span class="tb black button2" data-tag="HealthRegen">Health Regeneration</span>
+									<span class="tb black button2" data-tag="Tenacity">Tenacity</span>
+
+									<hr class="fancy-line" />
+
+									<span class="tb black button2" data-tag="Damage">Damage</span>
+									<span class="tb black button2" data-tag="LifeSteal">Lifesteal</span>
+									<span class="tb black button2" data-tag="CriticalStrike">Critical Strike</span>
+									<span class="tb black button2" data-tag="AttackSpeed">Attack Speed</span>
+									<span class="tb black button2" data-tag="ArmorPenetration">Armor Pen</span>
+
+									<hr class="fancy-line" />
+
+									<span class="tb black button2" data-tag="SpellDamage">Ability Power</span>
+									<span class="tb black button2" data-tag="SpellVamp">Spell Vamp</span>
+									<span class="tb black button2" data-tag="Mana">Mana (mana.. Do doo be-do-do)</span>
+									<span class="tb black button2" data-tag="ManaRegen">Mana Regeneration</span>
+									<span class="tb black button2" data-tag="MagicPenetration">Magic Pen</span>
+
+									<hr class="fancy-line" />
+
+									<span class="tb black button2" data-tag="Boots">Boots</span>
+									<span class="tb black button2" data-tag="NonbootsMovement">Movement</span>
+									<span class="tb black button2" data-tag="Slow">Slow</span>
+
+									<hr class="fancy-line" />
+
+									<span class="tb black button2" data-tag="CooldownReduction">Cooldown Reduction</span>
+									<span class="tb black button2" data-tag="Aura">Aura</span>
+
+									<hr class="fancy-line" />
+
+									<span class="tb black button2" data-tag="OnHit">On-Hit</span>
+									<span class="tb black button2" data-tag="Active">Active</span>
+
+									<hr class="fancy-line" />
+
+									<span class="tb black button2" data-tag="Bilgewater">Bilgewater</span>
+
+								</div></td>
+							</tr>
+						</table>
+
+					</td>
+				</tr>
+			</table>
+			<section class="buildBlock" style="text-align: center;">
+				<div id="ChampionSelect" style="float: left; width: 20%; height: 5em;">
+					<input type="hidden" value="{ItemSet->champion}" id="champih"/>
+					{forhsL0 champ in ChampionData}
+					{ck=champ->key}
+					<img width=32 height=32
+					     class="{ccc=ItemSet->champion}{ccn=champ->key}{ifRND24 ccc==ccn}active {endRND24}champbutton2 ImgBtn black fadeblack"
+					     name="{champ->key}" alt="{champ->name}" src="{champ->img}"/>
+					{endhsL0}
+				</div>
+				<input id="setnamei" class="blockinput" value="{ItemSet->title}" type="text" placeholder="Item-Set Title" />
+				<span class="borderino">Map: <select id="MapSelect">
+					<option value="any">Any</option>
+					<option value="SR">Summoners Rift</option>
+					<option value="HA">Howling Abyss</option>
+					<option value="TT">Twisted Treeline</option>
+					<option value="CS">Crystal Scar</option>
+				</select></span>
+				<span class="borderino">Mode: <select id="ModeSelect">
+					<option value="any">Any</option>
+					<option value="CLASSIC">Classic</option>
+					<option value="ARAM">ARAM</option>
+					<option value="ODIN">Dominion</option>
+				</select></span>
+				<input id="createidstuff" type="hidden" value="{TypusMaximusWaddafakius}" />
+				<br />
+				<span id="save" class="button2 xxl">SAVE</span>
+			</section>
+		</div>
+	</article>
+</div>

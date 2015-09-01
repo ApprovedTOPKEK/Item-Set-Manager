@@ -1,0 +1,121 @@
+<!--
+ Template used to display one ItemSet Object.
+ Assumes "currentItemset" as ItemSet to display.
+ -->
+<section id="iss{currentItemset->ID}"class="blueSection">
+		<table class="invisitable">
+			<tr>
+				<td rowspan=2>
+					{currentChamp=currentItemset->champion}
+					{currentChampData=ChampionData->$currentChamp}
+					<img src="{currentChampData->img}" width="48" height="48" alt="{currentChampData->name}"
+					     class="ItemSetChampion"/>
+				</td>
+				<td>
+					<span class="xl white b">{currentItemset->title}</span>
+				</td>
+				<td>
+					{cIcR=currentItemset->canRate}
+					{ifIST2 cIcR == true}
+					<span class="upvote button2"> Upvote (+1)</span>
+					{endIST2}
+				</td>
+				<td rowspan=2>
+					{cIcC=currentItemset->canCopy}
+					{ifIST0 cIcC == true}
+					<a target="_blank" href="createset.php?copy={currentItemset->ID}" class="copy white l button2">Copy</a>
+					{endIST0}
+				</td>
+				<td rowspan=2>
+					{cIcE=currentItemset->canEdit}
+					{ifIST1 cIcE == true}
+					<a href="createset.php?edit={currentItemset->ID}" class="edit white l button2">Edit</a>
+					{endIST1}
+				</td>
+				<td rowspan=2>
+					<a target="_blank" class="dl button2" href="download.php?id={currentItemset->ID}">Download</a>
+				</td>
+				<td rowspan="2">
+					{ifIST66 cIcE == true}
+					<span class="delete button2">Delete</span>
+
+					<div class="blackcover"></div>
+					<div class="popup" id="Del" data-delete-id="{currentItemset->ID}">
+						<section id="banner" class="window">
+							<div class="inner">
+								<span class="xl white">Really delete "{currentItemset->title}"?</span><br/>
+								<span class="rldel button2 white">Yes</span><span class="nodel button2 white">No</span>
+							</div>
+						</section>
+					</div>
+					{endIST66}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{cIr=currentItemset->rating}
+					<span class="votes xl {ifIST4 cIr < 0}red{endIST4}{ifIST5 cIr >= 0}green{endIST5} b">{cIr}</span>
+				</td>
+				<td>
+					{ifIST3 cIcR == true}
+					<span class="downvote button2"> Downvote (-1)</span>
+					{endIST3}
+				</td>
+			</tr>
+		</table>
+</section>
+<div id="ise{currentItemset->ID}" class="ItemSetExpanded blueSection">
+	{blocks = currentItemset->blocks}
+	{forIST6 block in blocks}
+	<hr class="fancy-line" style="margin-bottom: 0;"/>
+	<div class="ItemSetBlock">
+		<strong><span class="BlockTitle">{block->Name}</span></strong>
+	</div>
+	<hr class="fancy-line" style="margin-top: 0;"/>
+	<div>
+		{items = block->Items}
+		{forIST7 item in items}
+		{ifIST8 maxIndexIST7 == indexIST7}
+		{rM=block->recMath}
+		{ifIST9 rM==true}
+		<img style="width: 32px; height: 32px; float:left; margin-left: 1em;" src="www/arrow.png"/>
+		{endIST9}
+		{endIST8}
+		<div class="ItemSetItem">
+			<div class="divimg tooltip" style="position: relative; width: 32px; height: 32px; background: url('http://lkimg.zamimg.com/images/v2/items/icons/size32x32/{item->ItemID}.png')">
+				<div class="DivImgText" style="position: absolute; bottom: 0; left: 0;">
+					<span class="white m">{item->ItemCount}</span>
+				</div>
+				<div class="tts1">
+					<b>{item->Name}</b><br/>{item->Description}
+					<br/><br/>
+					<b>Builds Into:</b><br/>
+					{buildsinto = item->BuildsInto}
+					{forIST10 biid in buildsinto}
+					<div class="divimg ItemSetItem" style="position: relative; width: 32px; height: 32px; background: url('http://lkimg.zamimg.com/images/v2/items/icons/size32x32/{biid}.png')"></div>
+					{endIST10}
+					{bis = count(buildsinto)}
+					{ifIST11 bis == 0}
+					Nothing.
+					{endIST11}
+					<div style="clear: both"></div>
+					<br/>
+					<br/>
+					<b>Builds From:</b><br />
+					{buildsfrom = item->BuildsFrom}
+					{forIST12 bfid in buildsfrom}
+					<div class="divimg ItemSetItem" style="position: relative; width: 32px; height: 32px; background: url('http://lkimg.zamimg.com/images/v2/items/icons/size32x32/{bfid}.png')"></div>
+					{endIST12}
+					{bfs = count(buildsfrom)}
+					{ifIST13 bfs == 0}
+					Nothing.
+					{endIST13}
+				</div>
+			</div>
+			<span class="yellow l">{item->Gold}</span>
+		</div>
+		{endIST7}
+		<div style="clear: both"></div>
+	</div>
+	{endIST6}
+</div>

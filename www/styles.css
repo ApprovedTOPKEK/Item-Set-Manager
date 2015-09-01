@@ -1,0 +1,589 @@
+.b {
+    font-weight: bold;
+}
+
+span, body {
+    font-family: "Gill San", "Segoe UI", "Tahoma", "Franklin Gothic Medium", "Arial";
+}
+
+.xxs {font-size: xx-small;}
+.xs {font-size: x-small;}
+.s {font-size: small;}
+.m {font-size: medium;}
+.l {font-size: large;}
+.xl {font-size: x-large;}
+.xxl {font-size: xx-large;}
+.yellow {color: gold;}
+.green {color: limegreen;}
+.red {color: red;}
+.white {color: whitesmoke;}
+.black {color: black;}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+}
+
+#Top {
+    margin: 0;
+}
+
+.tac {
+    text-align: center;
+}
+#banner {
+    background-attachment: scroll, scroll, scroll, fixed;
+    background-color: #645862;
+    background-image: url("light-bl.svg"), url("light-br.svg"), url("overlay.png"), url("banner.jpg");
+    background-position: bottom left, bottom right, top left, top center;
+    background-repeat: no-repeat, no-repeat, repeat, no-repeat;
+    background-size: 25em, 25em, auto, cover;
+    color: #fff;
+    cursor: default;
+    padding: 5em 0;
+    text-align: center;
+}
+
+#banner .inner {
+    background: rgba(52, 27, 43, 0.5);
+    color: #fff;
+    display: inline-block;
+    padding: 3em;
+    text-align: center;
+}
+
+#banner .inner header {
+    display: inline-block;
+    border-bottom: solid 2px;
+    border-top: solid 2px;
+    margin: 0 0 2em 0;
+    padding: 3px 0 3px 0;
+}
+
+#banner .inner header h2 {
+    border-bottom: solid 2px;
+    border-top: solid 2px;
+    font-size: 2.5em;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    margin: 0;
+    padding-left: 0.05em;
+    position: relative;
+    text-transform: uppercase;
+}
+
+#banner .inner p {
+    letter-spacing: 0.1em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+#banner .inner footer {
+    margin: 2em 0 0 0;
+}
+
+#header {
+    background: transparent;
+    color: #fff;
+    padding: 2em 2.5em;
+    position: absolute;
+}
+.errormsg {
+    color: red;
+}
+#header nav {
+    right: 2.5em;
+    top: 1.75em;
+}
+
+#header nav ul li.active > a, #header nav ul li:hover > a {
+    border: solid 1px;
+}
+
+#header1 {
+    position: absolute;
+    right: 2.5em;
+    top: 1em;
+    color: #fff;
+    background: transparent;
+
+}
+.button2.black {
+    color: #000000;
+}
+.button2 {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    background: none;
+    border: solid 1px transparent;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 0 0.75em;
+    line-height:2.25em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.button2:hover{
+    border: solid 1px;
+    background: rgba(188, 202, 206, 0.15);
+    border-color: inherit;
+}
+
+.button2.yes{
+    border: solid 1px;
+    background: rgba(0, 204, 51, 0.2);
+    border-color: inherit;
+}
+
+.button2.no{
+    border: solid 1px;
+    background: rgba(184, 0, 0, 0.2);
+    border-color: inherit;
+}
+
+.inverted {
+    color: whitesmoke;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    background: none;
+    border: solid 1px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 900;
+    letter-spacing: 2px;
+    min-width: 18em;
+    padding: 0 0.75em;
+    line-height: 3.75em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.button.active {
+    background: rgba(188, 202, 206, 0.5);
+    border-color: rgba(188, 202, 206, 1);
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+.button:hover {
+    background: rgba(188, 202, 206, 0.15);
+    border-color: inherit;
+}
+
+input[type="button"].special,
+input[type="submit"].special,
+input[type="reset"].special,
+.button.special {
+    background: #83d3c9;
+    border-color: #83d3c9;
+    color: #fff !important;
+}
+
+input[type="button"].special:hover,
+input[type="submit"].special:hover,
+input[type="reset"].special:hover,
+.button.special:hover {
+    background: #96dad1 !important;
+    border-color: #96dad1 !important;
+}
+
+input[type="button"].fit,
+input[type="submit"].fit,
+input[type="reset"].fit,
+.button.fit {
+    width: 100%;
+}
+
+input[type="button"].small,
+input[type="submit"].small,
+input[type="reset"].small,
+.button.small {
+    font-size: 0.7em;
+    min-width: 14em;
+    padding: 0.5em 0;
+}
+
+input[type="button"].small,
+input[type="submit"].small,
+input[type="reset"].small,
+.button.small {
+    font-size: 0.8em;
+    min-width: 18em;
+    padding: 0.75em 0;
+}
+ul.buttons {
+    padding: 0;
+}
+ul.buttons li {
+    display: inline;
+    padding: 1em 0 0 0;
+}
+
+#Buttons {
+
+}
+
+.blackcover {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.window {
+    border: 3px solid whitesmoke;
+    padding: 3em;
+}
+
+.tooltip {
+    cursor: pointer;
+}
+
+.tooltip div.tts1 {
+    margin-left: -999em;
+    position: fixed;
+    color: transparent;
+    background-color: transparent;
+    -webkit-transition: background-color 0.4s linear, color 0.4s linear;
+    -moz-transition: background-color 0.4s linear, color 0.4s linear;
+    -ms-transition: background-color 0.4s linear, color 0.4s linear;
+    -o-transition: background-color 0.4s linear, color 0.4s linear;
+    transition: background-color 0.4s linear, color 0.4s linear;
+}
+
+.tooltip div.tts1.tts1a {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #f5f5f5;
+    padding: 1em;
+    position: fixed;
+    z-index: 1099;
+    margin-left: 0;
+    width: 250px;
+
+}
+
+.popup {
+    z-index: 1001;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+body {
+    background-color: #F3F6FA;
+}
+
+div#SiteBody {
+    background-image: url("dark-tl.svg"), url("dark-tr.svg"), url("dark-bl.svg"), url("dark-br.svg");
+    background-position: top left, top right, bottom left, bottom right;
+    background-repeat: no-repeat;
+    background-size: 25em;
+    min-height: 1000px;
+    padding: 7em 0;
+}
+article#main {
+    width: 60%;
+    margin: 2em auto;
+    padding: 1em;
+}
+
+hr.fancy-line {
+    border: 0;
+    height: 1px;
+
+}
+hr.fancy-line:before {
+    height: 1em;
+}
+hr.fancy-line:after {
+    content: '';
+    height: 0.5em;
+}
+
+hr.fancy-line:before, hr.fancy-line:after {
+    content: '';
+    width: 100%;
+}
+
+hr.fancy-line, hr.fancy-line:before {
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 75%);
+}
+
+.whiteSection {
+    background-color: #f5f5f5;
+}
+.blueSection {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    background-color: #83d3c9;
+    color: #fff;
+}
+
+.blueSection:hover {
+    background-color: #75C5C1;
+
+}
+
+.blueSection .button:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.blueSection .button.special {
+    background: #fff;
+    border-color: #fff;
+    color: #83d3c9 !important;
+}
+
+#BlockTemplate {
+    display: none;
+}
+
+.buildBlock {
+    background-color: #c0c0c0;
+    padding: 1em;
+    margin: 1em;
+    position: relative;
+}
+
+
+.ItemSetBlockItems {
+    padding-bottom: 4em;
+    height: 5em;
+    overflow-y: scroll;
+}
+
+#SetBuilderInner {
+}
+
+#SetBuilderInnerInner {
+    height: 54em;
+    overflow-y: scroll;
+}
+
+#itemlist {
+    overflow-y: scroll;
+    height: 45em;
+}
+#the1andonlyfilter {
+    overflow-y: scroll;
+    height: 45em;
+}
+
+.blueSection .button.special:hover {
+    border-color: inherit !important;
+    color: #fff !important;
+}
+
+.invisitable {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.ItemSetExpanded {
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 0;
+    margin-bottom: 2em;
+    display: none;
+}
+
+.ItemSetBlock {
+    padding-left: 15%;
+}
+.left {
+    text-align: left;
+}
+
+.borderino {
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    border: 1px solid black;
+    padding: 0.2em;
+}
+
+.blockinput {
+    border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    padding: 0.3em;
+    margin: 0.5em;
+    background-color: #c8c8c8;
+}
+
+.BlockTitle {
+    color: whitesmoke;
+    font-size: larger;
+}
+
+.invisitable td {
+    text-align: center;
+}
+
+.ImgBtn {
+    padding: 0.2em;
+    color: white;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.ImgBtn:hover {
+    cursor:pointer;
+}
+
+.ImgBtn.white {
+    border: 1px solid white;
+}
+.ImgBtn.white:hover{
+    background-color: rgba(188, 202, 206, 0.15);
+    border: 1px solid rgba(188, 202, 206, 0.15);
+}
+.ImgBtn.white.active {
+    background-color: rgba(188, 202, 206, 0.15);
+    border: 1px dashed rgba(188, 202, 206, 0.15);
+}
+.ImgBtn.fadeblack:hover {
+    background-color: black;
+    opacity: 0.3;
+}
+.ImgBtn.black {
+    border: 1px solid black;
+}
+.ImgBtn.black.active {
+    border: 1px dashed black;
+}
+
+
+#SetFilter{
+}
+#ChampionSelect {
+    height: 10em;
+    overflow-y: scroll;
+}
+
+.ItemSetItem {
+    float: left;
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+
+.DivImgText {
+    background-color: black;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+}
+
+#header nav {
+    letter-spacing: 0.075em;
+    position: absolute;
+    right: 1.5em;
+    text-transform: uppercase;
+    top: 0.75em;
+}
+
+#header nav ul li {
+    display: inline-block;
+    margin-left: 1.5em;
+}
+
+#header nav ul li a {
+    border: solid 1px transparent;
+    color: inherit;
+    display: inline-block;
+    line-height: 1em;
+    padding: 0.6em 0.75em;
+    text-decoration: none;
+}
+
+#header nav ul li input[type="button"],
+#header nav ul li input[type="submit"],
+#header nav ul li input[type="reset"],
+#header nav ul li .button {
+    font-size: 1em;
+    min-width: 0;
+    width: auto;
+}
+
+#header nav ul li.active > a, #header nav ul li:hover > a {
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    background: rgba(188, 202, 206, 0.15);
+}
+
+
+#SetBuilder {
+    padding: 2em;
+    width: 100%;
+}
+#CurrentItemSet {
+    width: 58%;
+    float: left;
+}
+#CurrentItemSet.Container {
+    padding: 0.8em;
+}
+
+#Items {
+    width: 38%;
+    float: left;
+}
+#Items.Container {
+    padding: 0.8em;
+}
+
+#SearchItem {
+    width: 100%;
+}
+
+#Item_List {
+    width: 60%;
+    float: left;
+}
+
+#Item_Filter {
+    width: 40%;
+    float: left;
+}

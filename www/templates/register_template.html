@@ -1,0 +1,101 @@
+<!-- 
+ 
+ This is just the tiny element in the website header.
+ Structure:
+ - Aligned:
+    - Username Input.
+    - Password Input.
+    - "Login/Register" Button.
+ 
+ -->
+<ul class="buttons vertical">
+	{smlm=UserAuthentification->showMustLoginMessage}
+	{if0 smlm==true}
+	<li><span class="errormsg centered">You must log-in first.</span></li>
+	{end0}
+	<li id="loginb"><a class="button2">Log-in</a></li>
+	<li class="inverted">OR</li>
+	<li id="registerb"><a class="button2">Register</a></li>
+</ul>
+
+<div class="blackcover"></div>
+<div id="Login" class="popup">
+	<section id="banner" class="window">
+		<div class="inner">
+			<form id="LoginForm" action="index.php" method="POST">
+
+				<span class="input input--haruki">
+					<input class="input__field input__field--haruki" type="text" id="input-1" name="Username" />
+					<label class="input__label input__label--haruki" for="input-1">
+						<span class="input__label-content input__label-content--haruki">Username</span>
+					</label>
+				</span>
+				<span class="input input--haruki">
+					<input class="input__field input__field--haruki" type="password" id="input-2" name="Password"/>
+					<label class="input__label input__label--haruki" for="input-2">
+						<span class="input__label-content input__label-content--haruki">Password</span>
+					</label>
+				</span>
+
+				<!--<span class="white xl">Username:</span><br/>
+				<input type="text" placeholder="Username" name="Username" /><br/>
+				<span class="white xl">Password:</span><br/>
+				<input type="password" placeholder="Password" name="Password" /><br/>
+				<br/>-->
+				<input type="submit" value="Log-in!"/><br/>
+				OR<br/>
+				<a id="closeLogin" class="button2">Close</a>
+			</form>
+		</div>
+	</section>
+</div>
+
+<div id="Register" class="popup">
+	<section id="banner" class="window">
+		<div class="inner">
+			<form id="RegisterForm" action="index.php" method="POST">
+
+				<span class="input input--haruki">
+					<input class="input__field input__field--haruki" type="text" id="input-1" name="RegisterName"/>
+					<label class="input__label input__label--haruki" for="input-1">
+						<span class="input__label-content input__label-content--haruki">Username</span>
+					</label>
+				</span>
+				<span class="input input--haruki">
+					<input class="input__field input__field--haruki" type="password" id="input-2" name="RegisterPassword"/>
+					<label class="input__label input__label--haruki" for="input-2">
+						<span class="input__label-content input__label-content--haruki">Password</span>
+					</label>
+				</span>
+				<span class="input input--haruki">
+					<input class="input__field input__field--haruki" type="text" id="input-3" name="RegisterMail"/>
+					<label class="input__label input__label--haruki" for="input-3">
+						<span class="input__label-content input__label-content--haruki">Email</span>
+					</label>
+				</span>
+				<br/>
+				<!--<span class="white xl">Username:</span><br/>
+				<input type="text" placeholder="Username" name="Username" /><br/>
+				<span class="white xl">Password:</span><br/>
+				<input type="password" placeholder="Password" name="Password" /><br/>
+				<br/>-->
+				<input type="submit" value="Register!"/><br/>
+				OR<br/>
+				<a id="closeRegister" class="button2">Close</a>
+			</form>
+		</div>
+	</section>
+</div>
+
+<!--
+<div id="Register">
+	<form id="RegisterForm" action="index.php" method="POST">
+		<span class="white xl">Username:</span><br/>
+		<input type="text" placeholder="Username" name="RegisterName"/><br/>
+		<span class="white xl">Password:</span><br/>
+		<input type="password" placeholder="Password" name="RegisterPassword"/><br/>
+		<input type="email" placeolder="your@email.com" name="RegisterMail"/><br/>
+		<input type="submit" value="Register!"/>
+	</form>
+</div>
+-->

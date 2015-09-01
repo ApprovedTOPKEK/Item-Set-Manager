@@ -1,0 +1,27 @@
+<!--
+
+ Structure:
+ - Aligned:
+    - Logo/Text
+    - "Home" Button. index.php (?)
+    - "Create Set" Button. create.php (?)
+    - User Login/Registration System.
+ - Div:
+    - Itemset-Filter:
+        - Aligned:
+            - Sort by Date (Clicking toggles "Most Recent to oldest"/"Oldest to most recent")
+            - Popularity (Clicking toggles "Most popular to least popular"/"Least popular to most popular")
+    - Paging
+    - Item Sets (List of item sets (itemset_template.html)) (When clicking on the set (And not one of the buttons), it will expand to reveal all items in it)
+	- Paging
+
+ -->
+
+
+<div id="SiteBody">
+	<article id="main">
+		Your Item-Sets:
+		<hr class="fancy-line" />
+		{ItemSetTemplate->printTemplate()}
+	</article>
+</div>

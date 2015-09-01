@@ -1,0 +1,9 @@
+<div id="Sets">
+	{isl=count(ItemSets)}
+	{ifMS0 isl == 0}
+	<span class="xl">No results found.</span>
+	{endMS0}
+	{forhsL1 currentItemset in ItemSets}
+		{include www/templates/itemset_template.html}
+	{endhsL1}
+</div>

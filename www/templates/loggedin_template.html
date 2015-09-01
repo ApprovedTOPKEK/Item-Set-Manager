@@ -1,0 +1,20 @@
+<!--
+
+ This is just the tiny element in the website header.
+ Structure:
+ - Welcome, %name%
+ - "Log out" Button.
+
+ -->
+<ul class="buttons vertical">
+	{srm=UserAuthentification->showRegisteredMessage}
+	{if0 srm==true}
+	<li><span class="errormsg centered">Registered successfully!</span></li>
+	{end0}
+	<li>Welcome back, {UserAuthentification->name} | {UserAuthentification->group()}</li>
+	<li id="logoutb"><a class="button2">Log-out</a></li>
+</ul>
+
+<form id="lof" action="index.php" method="POST">
+	<input type="hidden" name="logout"/>
+</form>

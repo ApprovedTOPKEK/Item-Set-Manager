@@ -1,0 +1,88 @@
+<!--
+
+ Homepage/Landingpage.
+
+ Structure:
+ - Aligned:
+    - Logo/Text
+    - "My Sets" Button. mysets.php (?)
+    - "Create Set" Button. create.php (?)
+    - User Login/Registration System.
+ - (Optional depending on PHP Post Data) "You need to log in first" message (When having clicked on My Sets without having logged in for example)
+ - (Optional depending on PHP Post Data) "Successfully registered" message (When having registered)
+ - Div:
+    - Itemset-Filter:
+        - Aligned:
+            - Champion selection (First champion: "All" Button)
+            - Rating selection ("All", Best to Worst, Worst to Best)
+            - Date selection ("All", Most recent to oldest, Oldest to most recent)
+            - "Fit All / Fit at least one" radio buttons
+    - Paging
+    - Item Sets (List of item sets (itemset_template.html)) (When clicking on the set (And not one of the buttons), it will expand to reveal all items in it)
+	- Paging
+
+ -->
+
+<div id="SiteBody">
+
+	<article id="main">
+		<div class="tac"><span class="xl">All Item-Sets</span></div>
+		<hr id="InsertHere" class="fancy-line"/>
+
+		<!-- -->
+		<div id="SetFilter" class="blueSection">
+			<table class="invisitable">
+				<tr>
+					<td style="width: 33%; text-align:  center;">
+						Champion
+						<hr class="fancy-line"/>
+					</td>
+					<td style="width: 33%; text-align:  center;">
+						Rating
+						<hr class="fancy-line"/>
+					</td>
+					<td style="width: 33%; text-align:  center;">
+						Date
+						<hr class="fancy-line"/>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 33%;">
+						<div id="ChampionSelect">
+							{forhsL0 champ in ChampionData}
+							{ck=champ->key}
+							<img width=32 height=32
+							     class="champbutton ImgBtn black fadeblack"
+							     name="{champ->key}" alt="{champ->name}" src="{champ->img}"/>
+							{endhsL0}
+						</div>
+					</td>
+					<td style="width: 33%;">
+						<div id="RatingSelect">
+							<ul class="buttons vertical">
+								<li><a class="arating button">All</a></li>
+								<li><a name="desc" class="rating button">Best first</a></li>
+								<li><a name="asc" class="rating button">Worst first</a></li>
+							</ul>
+						</div>
+					</td>
+					<td style="width: 33%;">
+						<div id="DateSelect">
+							<ul class="buttons vertical">
+								<li><a class="adate button">All</a></li>
+								<li><a name="desc" class="date button">Newest first</a></li>
+								<li><a name="asc" class="date button">Oldest first</a></li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!-- -->
+
+
+	{ItemSetTemplate->printTemplate()}
+	</article>
+</div>
+
+

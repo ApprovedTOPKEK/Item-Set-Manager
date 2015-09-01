@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Item-Set Manager</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="www/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="www/set1.css"/>
+	<link rel="stylesheet" type="text/css" href="www/normalize.css"/>
+	<script type="text/javascript" src="www/jquery.min.js"></script>
+	<script type="text/javascript" src="www/script.js"></script>
+	<script type="text/javascript" src="www/classie.js"></script>
+</head>
+<body>
+
+<div id="Top">
+	<header id="header1">
+		{UserTemplate->printTemplate()}
+	</header>
+	<section id="banner">
+		<div class="inner">
+			<header>
+				<h2>Item-Set Manager</h2>
+			</header>
+			<p>
+				<strong>Create</strong> and <strong>Manage</strong>
+				<br/>
+				your own
+				<br/>
+				League of Legends Item-Sets
+			</p>
+			<footer>
+				<ul class="buttons vertical">
+					{forH0 button in buttons}
+					<li><a class="button" href="{button->href}">{button->name}</a></li>
+					{endH0}
+				</ul>
+			</footer>
+		</div>
+	</section>
+</div>
